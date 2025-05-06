@@ -1,0 +1,10 @@
+Overall: AI Agents using Autogen
+Goal: Implement AI Agent with Autogen framework
+Goal: Solve: Find a research paper on [topic] that was published in [in/before/after] [year] and has [number of citations] citations.
+Goal: After implementation, evaluate it. 
+Goal: Short video explaining implementation and demo of agent
+Tool: Agent can either use web search tool, research paper DB, research paper search API to find the info
+Note: Difficult to run locally, use cloud based LLM like Mistral AI(free tier) and a fork of the Autogen framework
+
+
+Note: https://api.semanticscholar.org/graph/v1/paper/search

@@ -1,6 +1,6 @@
 from typing import Literal, Union
 from autogen import AssistantAgent
-from feedback_agent.config import LLM_CONFIG
+from research_searcher_agent.config import LLM_CONFIG
 
 SENTIMENT_VALUES = {"positive", "negative", "neutral"}
 
