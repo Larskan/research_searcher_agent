@@ -1,6 +1,5 @@
 from autogen import ConversableAgent
 from autogen.oai.client import MistralAIClient
-from research_searcher_agent.tools.categorization import categorize_research
 from research_searcher_agent.tools.query import query_handling, print_papers
 from research_searcher_agent.config import LLM_CONFIG
 import json
@@ -35,7 +34,7 @@ def create_searching_agent() -> ConversableAgent:
         
         2. Once all parameters are received, call the tool `query_handling(title, year, citations)` to search for papers.
 
-        3. Find minimum 5 papers.
+        3. Find 5 papers.
 
         4. Use `print_papers()` to display the results to the human.
 
@@ -54,7 +53,7 @@ def create_searching_agent() -> ConversableAgent:
         agent.client.rate_limit = LLM_CONFIG["config_list"][0].get("api_rate_limit", None)
 
     # add the tools to the agent
-    agent.register_for_llm(name="categorization", description="Search for Research based on inputs")(categorize_research)
+    # agent.register_for_llm(name="categorization", description="Search for Research based on inputs")(categorize_research)
     agent.register_for_llm(name="query_handling", description="Contains the queries for searching with the API")(query_handling)
     agent.register_for_llm(name="print_papers", description="Contains the queries for searching with the API")(print_papers)
 
@@ -69,7 +68,7 @@ def create_user_proxy():
         is_termination_msg=lambda msg: msg.get("content") is not None and "TERMINATE" in msg["content"],
         human_input_mode="TERMINATE",
     )
-    user_proxy.register_for_execution(name="categorization")(categorize_research)
+    # user_proxy.register_for_execution(name="categorization")(categorize_research)
     user_proxy.register_for_execution(name="query_handling")(query_handling)
     user_proxy.register_for_execution(name="print_papers")(print_papers)
     return user_proxy
@@ -88,7 +87,7 @@ def main():
     searching_agent = create_searching_agent()
     # Getting user input
     topic = input("Enter the research title: ")
-    year = input("Enter the year: ")
+    year = input("Enter Before/After/In and the year: ")
     citations = input("Enter the citations: ")
 
 

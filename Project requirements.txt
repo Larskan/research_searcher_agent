@@ -25,3 +25,6 @@ Step3: Implement the LLM-as-Critic
 * Receive the original prompt and your agents response
 * Evaluate responses based on defined criteria
 * Provide structured ratings like 1-10 and descriptive feedback
+
+Note: 
+* Categorization is for ambiguous inputs, if we give exact inputs, we dont need it.

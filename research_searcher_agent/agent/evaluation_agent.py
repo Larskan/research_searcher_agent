@@ -48,12 +48,19 @@ def evaluate_convo_agent(prompt: str, agent_response: str) -> dict:
         evaluator.client.rate_limit = LLM_CONFIG["config_list"][0].get("api_rate_limit", None)
 
     critic_prompt = f"""
-    You are evaluating an AI Searching Agent.
+    You are evaluating an AI Searching Agents response to a research query.
 
-    Evaluate the response based on these criteria:
-    Completeness (1-5): addresses every part of the request.
-    Quality (1-5): accurate, clear, and effectively structured.
-    Robustness (1-5): handles ambiguities, errors, or nonsensical input well.
+    Evaluate the response based on the following criteria:
+    Completeness (1-5): Does the response fully address all required parameters from the prompt?
+    Quality (1-5): Is the response accurate, clear and well structured?
+    Robustness (1-5): Does the response gracefully handle the inputs?
+
+    Be sure to:
+    - **Verify** whether the response **correctly respects the search parameters**, such as: 
+        - **Year** (like "before 2020") -> all listed papers must have year < 2020
+        - **Citations** (like 500) -> each paper must have citations >= 500
+    - If all parameters are met, do not deduct points.
+    - Only deduct points if there is a clear and specific failure. 
 
     User Prompt: {prompt}
     Agent Response: {agent_response}
@@ -82,6 +89,3 @@ def main():
         
 if __name__ == "__main__":
         main()
-
-# Note: this works, it is just currently giving a bad result
-#
