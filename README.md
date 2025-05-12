@@ -1,6 +1,6 @@
-# Customer Feedback Analysis Agent
+# Research searching agent and evaluation
 
-This is boilerplate code for a customer feedback analysis agent.
+This is an AI Agent that is focused around researching topics through a research paper database and evaluating the result.
 
 ## Setup
 
@@ -9,11 +9,17 @@ Install the Python dependencies.
 ```bash
 pip install -r requirements.txt
 ```
+Activate your virtual environment.
 
-## Run the agent
+## Run the Searching Agent
 
 ```bash
-python -m feedback_agent.agent.feedback_analysis_agent
+python -m research_searcher_agent.agent.searching_agent --mode query_handling
+```
+
+## Run the Evaluation Agent
+```bash
+python -m research_searcher_agent.agent.evaluation_agent
 ```
 
 ## Requirements
@@ -22,10 +28,6 @@ python -m feedback_agent.agent.feedback_analysis_agent
 - autogen
 - ollama
 - fix-busted-json
-
-## Minimal Autogen Example
-
-In the `agent/calculator_agent.py` file, there is a minimal example of how to use Autogen to create an agent that can use tools.
 
 > [!NOTE]
 > Open source LLM's need to support tool calling for this to work.

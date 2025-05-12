@@ -8,3 +8,20 @@ Note: Difficult to run locally, use cloud based LLM like Mistral AI(free tier) a
 
 
 Note: https://api.semanticscholar.org/graph/v1/paper/search
+
+Evaluation:
+* Completeness: Did the agent fully respond to every aspect of our prompt?
+* Quality: Was the response accurate, clear, well organized and easy to understand?
+* Robustness: How well did the agent handle ambiguous, incorrect or challenging inputs?
+
+Step2: Design Test Prompts
+* Typical prompt
+* Ambiguous prompt
+* Complex request
+* Edge case
+* Error
+
+Step3: Implement the LLM-as-Critic
+* Receive the original prompt and your agents response
+* Evaluate responses based on defined criteria
+* Provide structured ratings like 1-10 and descriptive feedback
